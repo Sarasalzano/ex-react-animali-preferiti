@@ -56,17 +56,37 @@
     <div id="root"></div>
 
     <script type="text/babel">
+      //import useState
+      const { useState } = React;
       //  creazione componente
       const MioComponente = () => {
-        const animals = ["Gatto", "Cane", "Uccello", "Pinguino"];
+        const [animals, setAnimals] = useState([]);
+        const animalsChoices = [
+          "Cane",
+          "Gatto",
+          "Pappagallo",
+          "Cavallo",
+          "Panda",
+        ];
+
+        // funzione per scegliere animali random
+        const randomAnimal = () => {
+          // Indice casuale per selezionare un animale
+          const random = Math.floor(Math.random() * animalsChoices.length);
+          return animalsChoices[random];
+        };
+
         return (
+          // Al click, aggiorna lo state aggiungendo un animale casuale all'array esistente
           <>
+            <button onClick={() => setAnimals([...animals, randomAnimal()])}>
+              Aggiungi animale
+            </button>
             <details>
               <summary>
                 <strong>Animali</strong>
               </summary>
               <div className="contenuto-espandibile">
-                //map sull'array di animals
                 <ul>
                   {animals.map((animal, index) => (
                     <li key={animal}>{animal}</li>
