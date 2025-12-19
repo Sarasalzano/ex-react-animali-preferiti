@@ -56,6 +56,28 @@
     <div id="root"></div>
 
     <script type="text/babel">
+      //  creazione componente
+      const MioComponente = () => {
+        const animals = ["Gatto", "Cane", "Uccello", "Pinguino"];
+        return (
+          <>
+            <details>
+              <summary>
+                <strong>Animali</strong>
+              </summary>
+              <div className="contenuto-espandibile">
+                //map sull'array di animals
+                <ul>
+                  {animals.map((animal, index) => (
+                    <li key={animal}>{animal}</li>
+                  ))}
+                </ul>
+              </div>
+            </details>
+          </>
+        );
+      };
+
       const FavouriteAnimals = () => {
         return (
           <>
@@ -69,7 +91,9 @@
                   alt="Immagine Casuale"
                 />
               </figure>
-              <div className="lista-animali"></div>
+              <div className="lista-animali">
+                <MioComponente />
+              </div>
             </main>
             <footer>
               <p>Creato con amore da... un collega sbadato! 🐾</p>
